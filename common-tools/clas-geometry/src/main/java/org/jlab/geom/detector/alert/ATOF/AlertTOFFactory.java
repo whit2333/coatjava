@@ -20,18 +20,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author viktoriya
- * this is the latest ATOF geometry class to be used in reco. and in GEMC simulations!
- * commit on July 02, 2020
+ * @author viktoriya, whit
+ *
+ * ATOF geometry:
+ *
+ * _________________
+ * \               /
+ *  \   wedge     /     2cm thick
+ *   \           /
+ *    \_________/
+ *     \__row__/        3mm thick
+ *
+ *         ^
+ *         |
+ *         |
+ *         |
+ *      paticle
+ *
  */
 public class AlertTOFFactory implements Factory<AlertTOFDetector, AlertTOFSector, AlertTOFSuperlayer, AlertTOFLayer> {
 
-	private final int nsectors = 15;
-	private final int nsuperl  = 2;
-	private final int nlayers1 = 10;
-	private final int npaddles = 4;
+	private final int nsectors = 15; // 15 modules 
+	private final int nsuperl  = 2;  // 2 layers
+	private final int npaddles = 4;  // 4 rows per module
+	private final int nlayers1 = 10; // 10 wedges  per row
 
-	private final double openAng_pad_deg    = 6.0;
+	private final double openAng_pad_deg    = 6.0; 
 	private final double openAng_pad_rad    = Math.toRadians(openAng_pad_deg);
 	private final double openAng_sector_rad = npaddles * openAng_pad_rad;
 
@@ -92,8 +106,8 @@ public class AlertTOFFactory implements Factory<AlertTOFDetector, AlertTOFSector
 
 		double R0  = 77.0d;
 		double R1  = 80.0d;
-		double dR0 = 3.0d;
-		double dR1 = 20.0d;
+		double dR0 = 3.0d;    // row scintillator thickness
+		double dR1 = 20.0d;   // wedge scintillator thickness
 
 		// trapezoide dimensions for a bigger paddle (external)
 		double pad_b1 = 8.17369; // mm
